@@ -1,0 +1,37 @@
+#include<iostream>
+#include<fstream>
+using namespace std;
+int main()
+{
+    ofstream infile;
+    infile.open("studentDat.txt",ios::out|ios::app);
+    
+    int rollno;
+    char name[20];
+    
+    cout<<"Enter student Name:";
+    cin>>name;
+    cout<<"Enter student's Roll_no:";
+    cin>>rollno;
+    
+    // writing into a file (studentData.txt)
+    infile<<rollno<<" ";
+    infile<<name<<"\n";
+    cout<<"\nSucessfully written in file !\n";
+    infile.close();
+    
+    // Reading from a file (studentData.txt)
+    fstream outfile;
+     outfile.open("studentData.txt",ios::in);
+     string container;
+    
+    cout<<"\nfile content:\n";
+    while(outfile.eof()==0)
+    {
+        getline(outfile,container);
+    
+       cout<<container<<endl;
+    }
+    outfile.close();
+    return 0;
+}
